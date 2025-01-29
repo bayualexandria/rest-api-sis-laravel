@@ -1,0 +1,85 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\cis2\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.8.1
+2 info using node@v20.15.0
+3 silly config load:file:C:\Users\cis2\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\cis2\.npmrc
+5 silly config load:file:C:\Users\cis2\AppData\Roaming\npm\etc\npmrc
+6 verbose title npm install npm@10.8.3
+7 verbose argv "install" "--global" "npm@10.8.3"
+8 verbose logfile logs-max:10 dir:C:\Users\cis2\Documents\Project\rest-api-laravel-sis\tmpnodejsnpm-cache\_logs\2024-09-21T00_17_49_752Z-
+9 verbose logfile C:\Users\cis2\Documents\Project\rest-api-laravel-sis\tmpnodejsnpm-cache\_logs\2024-09-21T00_17_49_752Z-debug-0.log
+10 silly logfile done cleaning log files
+11 http fetch GET 200 https://registry.npmjs.org/npm 2170ms (cache miss)
+12 silly packumentCache heap:2032926720 maxSize:508231680 maxEntrySize:254115840
+13 silly idealTree buildDeps
+14 silly fetch manifest npm@10.8.3
+15 silly packumentCache full:https://registry.npmjs.org/npm cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/npm 27251ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/npm set size:undefined disposed:false
+18 silly placeDep ROOT npm@10.8.3 OK for:  want: 10.8.3
+19 silly reify mark retired [
+19 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\node_modules\\npm',
+19 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npm',
+19 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npm.cmd',
+19 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npm.ps1',
+19 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npx',
+19 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npx.cmd',
+19 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npx.ps1'
+19 silly reify ]
+20 silly reify moves {
+20 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\node_modules\\npm': 'C:\\Users\\cis2\\AppData\\Roaming\\npm\\node_modules\\.npm-ks3rvImk',
+20 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npm': 'C:\\Users\\cis2\\AppData\\Roaming\\npm\\.npm-L6rdfUPd',
+20 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npm.cmd': 'C:\\Users\\cis2\\AppData\\Roaming\\npm\\.npm.cmd-K1TMMqTZ',
+20 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npm.ps1': 'C:\\Users\\cis2\\AppData\\Roaming\\npm\\.npm.ps1-ctkz0KA7',
+20 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npx': 'C:\\Users\\cis2\\AppData\\Roaming\\npm\\.npx-tz8Zjk4A',
+20 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npx.cmd': 'C:\\Users\\cis2\\AppData\\Roaming\\npm\\.npx.cmd-WhZZwzu6',
+20 silly reify   'C:\\Users\\cis2\\AppData\\Roaming\\npm\\npx.ps1': 'C:\\Users\\cis2\\AppData\\Roaming\\npm\\.npx.ps1-9uEIIK4z'
+20 silly reify }
+21 silly tarball no local data for npm@https://registry.npmjs.org/npm/-/npm-10.8.3.tgz. Extracting by manifest.
+22 http fetch GET 200 https://registry.npmjs.org/npm/-/npm-10.8.3.tgz 12636ms (cache miss)
+23 silly CHANGE node_modules/npm
+24 silly CHANGE node_modules/npm/node_modules/@npmcli/redact
+25 silly CHANGE node_modules/npm/node_modules/@npmcli/package-json
+26 silly CHANGE node_modules/npm/node_modules/@npmcli/installed-package-contents
+27 silly CHANGE node_modules/npm/node_modules/@npmcli/git
+28 silly CHANGE node_modules/npm/node_modules/@npmcli/arborist
+29 silly CHANGE node_modules/npm/node_modules/@npmcli/config
+30 silly CHANGE node_modules/npm/node_modules/which
+31 silly CHANGE node_modules/npm/node_modules/qrcode-terminal
+32 silly CHANGE node_modules/npm/node_modules/socks-proxy-agent
+33 silly CHANGE node_modules/npm/node_modules/semver
+34 silly CHANGE node_modules/npm/node_modules/normalize-package-data
+35 silly CHANGE node_modules/npm/node_modules/pacote
+36 silly CHANGE node_modules/npm/node_modules/postcss-selector-parser
+37 silly CHANGE node_modules/npm/node_modules/npm-registry-fetch
+38 silly CHANGE node_modules/npm/node_modules/npm-pick-manifest
+39 silly CHANGE node_modules/npm/node_modules/npm-package-arg
+40 silly CHANGE node_modules/npm/node_modules/node-gyp
+41 silly REMOVE node_modules/npm/node_modules/node-gyp/node_modules/proc-log
+42 silly CHANGE node_modules/npm/node_modules/nopt
+43 silly CHANGE node_modules/npm/node_modules/mkdirp
+44 silly REMOVE node_modules/npm/node_modules/minipass-json-stream
+45 silly REMOVE node_modules/npm/node_modules/minipass-json-stream/node_modules/minipass
+46 silly CHANGE node_modules/npm/node_modules/libnpmpack
+47 silly CHANGE node_modules/npm/node_modules/minimatch
+48 silly CHANGE node_modules/npm/node_modules/lru-cache
+49 silly CHANGE node_modules/npm/node_modules/libnpmfund
+50 silly CHANGE node_modules/npm/node_modules/libnpmexec
+51 silly CHANGE node_modules/npm/node_modules/jackspeak
+52 silly CHANGE node_modules/npm/node_modules/libnpmdiff
+53 silly REMOVE node_modules/npm/node_modules/is-core-module
+54 silly CHANGE node_modules/npm/node_modules/foreground-child
+55 silly REMOVE node_modules/npm/node_modules/hasown
+56 silly REMOVE node_modules/npm/node_modules/function-bind
+57 silly CHANGE node_modules/npm/node_modules/https-proxy-agent
+58 silly CHANGE node_modules/npm/node_modules/glob
+59 silly CHANGE node_modules/npm/node_modules/cross-spawn/node_modules/which
+60 silly CHANGE node_modules/npm/node_modules/debug
+61 silly CHANGE node_modules/npm/node_modules/cssesc
+62 silly CHANGE node_modules/npm/node_modules/cacache
+63 verbose cwd C:\Users\cis2\Documents\Project\rest-api-laravel-sis
+64 verbose os Windows_NT 10.0.22621
+65 verbose node v20.15.0
+66 verbose npm  v10.8.1
+67 verbose exit 0
+68 info ok
