@@ -1,2 +1,2 @@
-const repositori = "http://127.0.0.1:8000/api/";
+const repositori = "http://localhost/api/";
 export default repositori;

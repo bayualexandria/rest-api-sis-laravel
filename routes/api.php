@@ -182,6 +182,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/', 'store');
         Route::get('restore', 'restoreDataSiswa');
         Route::get('data-trash', 'showDeleteDataSiswa');
+        Route::get('kelas', 'getAllSiswaByKelas');
+        Route::post('kelas', 'insertSiswaByKelas');
         Route::delete('delete-permanent', 'deletePermanenDataSiswa');
         Route::get('{nis}', 'show');
         Route::post('{nis}', 'update');

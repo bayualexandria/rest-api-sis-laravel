@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailVerification;
+use Illuminate\Support\Facades\DB;
 
 class GuruController extends Controller
 {
@@ -26,7 +27,13 @@ class GuruController extends Controller
     }
     public function index()
     {
-        return response()->json(['data' => $this->guru->all(), 'message' => `Data it's ok`, 'status' => 200], 200);
+        $guru = DB::table('guru')
+            ->join('users', 'nip', 'users.username')
+            ->join('status_user', 'users.status_id', 'status_user.id')
+            ->select('guru.id', 'guru.nip', 'guru.nama', 'guru.jenis_kelamin', 'guru.no_hp', 'guru.image_profile', 'guru.alamat', 'status_user.status')
+            ->orderBy('guru.created_at', 'desc')
+            ->get();
+        return response()->json(['data' => $guru, 'message' => `Data it's ok`, 'status' => 200], 200);
     }
 
     /**
@@ -40,7 +47,8 @@ class GuruController extends Controller
             'email' => 'required|email|unique:users',
             'jenis_kelamin' => 'required',
             'no_hp' => 'required|unique:guru',
-            'alamat' => 'required'
+            'alamat' => 'required',
+            'status' => 'required'
         ], [
             'nip.required' => 'NIP harus diisi',
             'nip.min' => 'NIP minimal 18 karakter',
@@ -54,6 +62,7 @@ class GuruController extends Controller
             'no_hp.required' => 'No. Handphone harus diisi',
             'no_hp.unique' => 'No. Handphone yang anda masukan sudah terdaftar',
             'alamat.required' => 'Alamat harus diisi',
+            'status.required' => 'Status user harus diisi'
         ]);
 
         if ($validation->fails()) {
@@ -80,7 +89,7 @@ class GuruController extends Controller
             'email' => $request->email,
             'name' => $request->nama,
             'password' => bcrypt($request->nip),
-            'status_id' => 2
+            'status_id' => $request->status
         ];
         $guru = $this->guru->create($data);
         $user = $this->user->create($dataUser);
@@ -101,7 +110,12 @@ class GuruController extends Controller
      */
     public function show(string $nip)
     {
-        $guru = $this->guru->where('nip', $nip)->first();
+        $guru = DB::table('guru')
+            ->join('users', 'nip', 'users.username')
+            ->join('status_user', 'users.status_id', 'status_user.id')
+            ->select('guru.nip', 'guru.nama', 'guru.jenis_kelamin', 'guru.no_hp', 'guru.image_profile', 'guru.alamat', 'status_user.status')
+            ->where('guru.nip', $nip)
+            ->first();
         if ($guru) {
             return response()->json(['data' => $guru, 'message' => 'Data guru dengan nip ' . $nip . ' berhasil ditampilkan', 'status' => 200], 200);
         }
@@ -172,7 +186,7 @@ class GuruController extends Controller
                 ? $request->nama
                 : $user->name,
             'password' => $request->email ? bcrypt($nip) : $user->password,
-            'status_id' => 2
+            'status_id' => $request->status ? $request->status : $user->status_id
         ];
         $dataGuru = $guru->update($data);
         if ($request->email) {

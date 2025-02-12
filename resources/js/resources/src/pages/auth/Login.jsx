@@ -50,20 +50,23 @@ function Login() {
                     date.setTime(date.getTime() + 60 * 60 * 1000);
                     Cookies.set(
                         "authentication",
-                        [response.accessToken, username]
+                        [
+                            response.accessToken,
+                            response.user.username,
+                            response.user.status_id,
+                        ]
                         // {
                         //   expires: date,
                         // }
                     );
                     setuser(username);
                 }
-                // console.log(response);
+
                 return response;
             }, 900);
         } catch (e) {
             setLoading(false);
             if (e.message === "Failed to fetch") {
-                console.log(e);
                 setError(
                     "Koneksi ke server terputus! Mohon hubungi pihak administrator server."
                 );

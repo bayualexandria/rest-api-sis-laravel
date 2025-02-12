@@ -13,6 +13,7 @@ class StatusUserSeeder extends Seeder
     public function run(): void
     {
         DB::table('status_user')->insert(['status' => 'Admin']);
+        DB::table('status_user')->insert(['status' => 'Wali Kelas']);
         DB::table('status_user')->insert(['status' => 'Guru']);
         DB::table('status_user')->insert(['status' => 'Siswa']);
     }

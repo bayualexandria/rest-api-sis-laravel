@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import repositori from "../../utils/repositories";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import repoimages from "../../utils/repoimages";
+import axios from "axios";
 
 function KelasById() {
     const { nip, id } = useParams();
@@ -55,14 +56,35 @@ function KelasById() {
         console.log(result);
     };
 
-    const handleOnSelect = (item) => {
+    const handleOnSelect = async (item) => {
+       
+        const data = {
+            siswa_id: item.id,
+            kelas_id: id,
+        };
+
+        try {
+            await fetch(`${repositori}siswa/kelas`, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token[0],
+                },
+            }).then((res) => res.json());
+            return (location.href = "/kelas/" + nip + "/" + id);
+        } catch (error) {}
         // the item selected
-        console.log(item);
+        console.log(item.id);
     };
 
     const handleOnFocus = () => {
         console.log("Focused");
     };
+    useEffect(() => {
+        getDataKelasById();
+        getDataSiswa();
+    }, []);
 
     const formatResult = (items) => {
         return (
@@ -155,7 +177,7 @@ function KelasById() {
                         </div>
 
                         <div className="w-full md:w-3/5">
-                            <div className="rounded-md shadow-md p-10 bg-white"></div>
+                            <div className="rounded-md shadow-md p-10 bg-white flex flex-col gap-5"></div>
                         </div>
                     </div>
                 </div>

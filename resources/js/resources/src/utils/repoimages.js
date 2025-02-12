@@ -1,3 +1,3 @@
-const repoimages = "http://127.0.0.1:8000/storage/";
+const repoimages = "http://localhost/storage/";
 
 export default repoimages;

@@ -18,11 +18,13 @@ import {
     Register,
     KelasById,
 } from "./src/pages/Index";
+import PageNotFound from "./src/pages/404/PageNotFound";
 
 export default function Index() {
     return (
         <BrowserRouter>
             <Routes>
+            <Route path="*" element={<PageNotFound/>} />
                 {/* Start UnAuthorization */}
                 {/* Login */}
                 <Route
@@ -170,6 +172,7 @@ function PrivateRoute({ children }) {
     }
     return <Navigate to="/login" replace={true} />;
 }
+
 
 function UnAthenticated({ children }) {
     const cookieAuth = Cookies.get("authentication");

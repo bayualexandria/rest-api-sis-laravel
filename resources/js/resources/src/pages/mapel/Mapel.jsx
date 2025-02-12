@@ -31,7 +31,9 @@ function Mapel() {
                     </div>
                     <div className="flex flex-col gap-y-10">
                         <div className="grid gap-5 grid-col-1 ">
-                            <div className="p-5 transition duration-300 bg-white rounded-lg shadow-md "></div>
+                            <div className="p-5 transition duration-300 bg-white rounded-lg shadow-md">
+
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -136,7 +136,7 @@ class AuthenticationController extends Controller
                         $tokenResult = $user->createToken('Personal Access Token');
                         $token = $tokenResult->plainTextToken;
                         $guru = Guru::where('nip', $user->username)->first();
-                        if (!$guru && $user->status_id == 2) {
+                        if (!$guru) {
                             Guru::create(['nip' => $user->username, 'nama' => $user->name, 'image_profile' => 'assets/images/users.png']);
                             return response()->json([
                                 'user' => $user,

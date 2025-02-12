@@ -25,7 +25,7 @@ function Header() {
                 method: "GET",
             }).then((res) => res.json());
             setDataUser(response.data);
-           
+            console.log(response.data.guru.image_profile);
         } catch (error) {
             console.log("hasil" + error);
         }
@@ -116,7 +116,9 @@ function Header() {
                         className="flex items-center gap-x-1 cursor-pointer"
                         onClick={showMenu}
                     >
-                        {dataUser.status_id == 2 ? (
+                        {dataUser.status_id == 2 ||
+                        dataUser.status_id == 1 ||
+                        dataUser.status_id == 3 ? (
                             <div className="w-9 h-9 rounded-full shadow-md  p-2 flex justify-center items-center border border-slate-200 overflow-hidden">
                                 <img
                                     src={

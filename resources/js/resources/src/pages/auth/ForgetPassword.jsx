@@ -55,12 +55,11 @@ function ForgetPassword() {
                 icon: "success",
                 title: `${response.message}`,
             });
-            console.log(response);
         } catch (e) {
-            console.log(e.message);
+            e.message;
         }
     };
-    
+
     useEffect(() => {
         setuser(Cookies.get("authentication"));
     }, []);

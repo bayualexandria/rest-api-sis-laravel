@@ -10,6 +10,7 @@ use App\Notifications\ChangeEmailSiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\EmailVerification;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class SiswaController extends Controller
@@ -248,5 +249,31 @@ class SiswaController extends Controller
         User::onlyTrashed()->forceDelete();
 
         return response()->json(['message' => "Data siswa berhasil dihapus secara permanent", 'status' => 200], 200);
+    }
+
+    function getAllSiswaByKelas()
+    {
+        $siswa = DB::table('history_siswa')
+            ->join('siswa', 'siswa_id', 'siswa.id')
+            ->join('kelas', 'kelas_id', 'kelas.id')
+            ->join('mapel', 'mapel_id', 'mapel.id')
+            ->select('siswa.nis', 'siswa.nama', 'kelas.nama_kelas', 'kelas.jurusan', 'mapel.nama_mapel')
+            ->orderBy('siswa.nama', 'desc')
+            ->get();
+        if ($siswa) {
+            return response()->json(['data' => $siswa, 'message' => "Data siswa berhasil ditampilkan", 'status' => 200], 200);
+        }
+        return response()->json(['message' => "Data siswa tidak ada!", 'status' => 404], 404);
+    }
+
+    function insertSiswaByKelas(Request $request)
+    {
+
+        DB::table('history_siswa')->insert([
+            'siswa_id' => $request->siswa,
+            'kelas_id' => $request->kelas,
+            'mapel_id' => $request->mapel
+        ]);
+        return response()->json(['message' => "Data berhasil ditambahkan!", 'status' => 200], 200);
     }
 }

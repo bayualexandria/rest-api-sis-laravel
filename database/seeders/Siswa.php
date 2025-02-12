@@ -16,7 +16,7 @@ class Siswa extends Seeder
     {
         $faker = Factory::create('id_ID');
         $gender = $faker->randomElement(['Laki-laki', 'Perempuan']);
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 1000; $i++) {
             $nik = $faker->nik;
             $nama = $faker->name($gender);
             DB::table('siswa')->insert(

@@ -121,6 +121,7 @@ function Kelas() {
                 },
                 body: JSON.stringify(dataKelas),
             }).then((res) => res.json());
+            console.log(response);
             if (response.status === 403) {
                 setTimeout(() => {
                     setloading(false);
@@ -138,7 +139,9 @@ function Kelas() {
                     setTimeout(() => (window.location.href = "/kelas"), 1000);
                 }, 1000);
             }
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     // Get data kelas
@@ -296,7 +299,7 @@ function Kelas() {
                                             }
                                         >
                                             <option value="">
-                                                --Pilih Wali Kelas--
+                                                --Pilih Kelas--
                                             </option>
                                             {guru.map((data) => {
                                                 return (
@@ -305,6 +308,7 @@ function Kelas() {
                                                         key={data.id}
                                                     >
                                                         {data.nama}
+                                                        
                                                     </option>
                                                 );
                                             })}
