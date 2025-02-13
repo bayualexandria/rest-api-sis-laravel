@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import repositori from "../../utils/repositories";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import repoimages from "../../utils/repoimages";
-import axios from "axios";
 
 function KelasById() {
     const { nip, id } = useParams();
@@ -24,7 +23,7 @@ function KelasById() {
                     Authorization: "Bearer " + token[0],
                 },
             }).then((res) => res.json());
-            console.log("kelas hello", response.data);
+            // console.log("kelas hello", response.data);
             setKelas(response.data);
         } catch (error) {}
     };
@@ -40,7 +39,7 @@ function KelasById() {
             })
                 .then((res) => res.json())
                 .then((res) => res.data);
-            console.log("siswa hello", response);
+            // console.log("siswa hello", response);
             setSiswa(response);
         } catch (error) {}
     };
@@ -48,16 +47,15 @@ function KelasById() {
     const handleOnSearch = (string, results) => {
         // onSearch will have as the first callback parameter
         // the string searched and for the second the results.
-        console.log(string, results);
+        // console.log(string, results);
     };
 
     const handleOnHover = (result) => {
         // the item hovered
-        console.log(result);
+        // console.log(result);
     };
 
     const handleOnSelect = async (item) => {
-       
         const data = {
             siswa_id: item.id,
             kelas_id: id,
@@ -75,11 +73,11 @@ function KelasById() {
             return (location.href = "/kelas/" + nip + "/" + id);
         } catch (error) {}
         // the item selected
-        console.log(item.id);
+        // console.log(item.id);
     };
 
     const handleOnFocus = () => {
-        console.log("Focused");
+        // console.log("Focused");
     };
     useEffect(() => {
         getDataKelasById();
@@ -114,7 +112,7 @@ function KelasById() {
                 },
             }).then((res) => res.json());
             setGuru(response.data);
-            console.log("guru", nip);
+            // console.log("guru", nip);
         } catch (error) {}
     };
 
@@ -134,7 +132,7 @@ function KelasById() {
                             Data Kelas {kelas.kelas}|{kelas.jurusan}
                         </h4>
                     </div>
-                    <div className="w-full md:w-[40%]">
+                    <div className="w-full md:w-[35%]">
                         <ReactSearchAutocomplete
                             items={siswa}
                             onSearch={handleOnSearch}
@@ -144,7 +142,7 @@ function KelasById() {
                             autoFocus
                             formatResult={formatResult}
                             fuseOptions={{ keys: ["nama", "nis", "id"] }}
-                        ></ReactSearchAutocomplete>
+                        />
                     </div>
                     <div className="flex flex-col md:flex-row gap-12 pt-8 h-auto">
                         <div className="w-full md:w-2/6">

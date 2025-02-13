@@ -4,6 +4,27 @@ import logoGoogle from "../../assets/images/logo-google.png";
 import { Link, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import repositori from "../../utils/repositories";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const templateModal = withReactContent(Swal).mixin({
+    customClass: {
+        confirmButton:
+            "bg-sky-500 font-bold text-white outline-none border border-sky-500 rounded-md ml-2 px-2 py-0.5 cursor-pointer",
+        cancelButton:
+            "bg-rose-500  font-bold text-white outline-none border border-rose-500 rounded-md mr-2 px-2 py-0.5 cursor-pointer",
+    },
+    buttonsStyling: false,
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    },
+});
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -11,14 +32,14 @@ function Login() {
     const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
-    const [error, setError] = useState("");
+
     const [user, setuser] = useState(false);
     const data = { username, password };
 
     const onHandlerSubmit = async (e) => {
         e.preventDefault();
         setMessage("");
-        setError("");
+
         setLoading(true);
         try {
             let response = await fetch(`${repositori}auth/login-admin`, {
@@ -39,10 +60,10 @@ function Login() {
                     }, 8000);
                 }
                 if (response.status === 403) {
-                    setError(response.message);
-                    setTimeout(() => {
-                        return setError("");
-                    }, 8000);
+                    return templateModal.fire({
+                        icon: "error",
+                        title: `${response.message}`,
+                    });
                 }
 
                 if (response.status === 200) {
@@ -100,15 +121,7 @@ function Login() {
                             className="w-20"
                         />
                     </div>
-                    {error ? (
-                        <div className="py-2 flex justify-center items-center rounded-md shadow-md bg-rose-400 px-2 mb-3 text-center">
-                            <p className="text-sm font-bold text-white animate-pulse">
-                                {error}
-                            </p>
-                        </div>
-                    ) : (
-                        ""
-                    )}
+
                     <form
                         onSubmit={onHandlerSubmit}
                         className="flex flex-col gap-y-7"

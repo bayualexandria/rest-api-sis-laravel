@@ -49,9 +49,14 @@ function ForgetPassword() {
                 setTimeout(() => {
                     setMessage("");
                 }, 5000);
+                setLoading(false);
+                return await templateModal.fire({
+                    icon: "error",
+                    title: `${response.message}`,
+                });
             }
             setLoading(false);
-            await templateModal.fire({
+            return await templateModal.fire({
                 icon: "success",
                 title: `${response.message}`,
             });

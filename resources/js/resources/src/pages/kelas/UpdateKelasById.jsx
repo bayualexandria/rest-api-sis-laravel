@@ -99,7 +99,7 @@ function UpdateKelasById({ id }) {
                     Authorization: "Bearer " + token[0],
                 },
             }).then((res) => res.json());
-            console.log("kelas by id", response);
+            // console.log("kelas by id", response);
             if (response.status === 404) {
                 setError(response.message);
             }

@@ -17,7 +17,9 @@ class ProfileSekolahSedder extends Seeder
             'nama_sekolah' => 'SMK XXX XXXX',
             'no_telp' => 'XXXXXXXX',
             'alamat_sekolah' => 'XXXXX XXXXX XXXXX',
-            'akreditasi' => 'B'
+            'akreditasi' => 'B',
+            'image'
+            => 'assets/images/users.png',
         ]);
     }
 }

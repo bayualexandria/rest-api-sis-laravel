@@ -25,9 +25,8 @@ function Header() {
                 method: "GET",
             }).then((res) => res.json());
             setDataUser(response.data);
-            console.log(response.data.guru.image_profile);
         } catch (error) {
-            console.log("hasil" + error);
+            error;
         }
     };
 

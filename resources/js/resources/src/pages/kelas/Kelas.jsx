@@ -121,7 +121,7 @@ function Kelas() {
                 },
                 body: JSON.stringify(dataKelas),
             }).then((res) => res.json());
-            console.log(response);
+            // console.log(response);
             if (response.status === 403) {
                 setTimeout(() => {
                     setloading(false);
@@ -155,7 +155,7 @@ function Kelas() {
                     Authorization: "Bearer " + token[0],
                 },
             }).then((res) => res.json());
-            console.log(response);
+            // console.log(response);
             if (response.status == 200) {
                 setLoadData(false);
                 setKelasHistory(response.data);
@@ -179,7 +179,7 @@ function Kelas() {
                     method: "GET",
                 }).then((res) => res.json());
                 setUser(response.data);
-                console.log("first", response.data);
+                // console.log("first", response.data);
             } catch (error) {
                 return error;
             }
@@ -199,7 +199,7 @@ function Kelas() {
                     }
                 ).then((res) => res.json());
                 setDataKelasGuru(response.data);
-                console.log("kelas guru", response);
+                // console.log("kelas guru", response);
             } catch (error) {
                 return error;
             }
@@ -448,11 +448,11 @@ function Kelas() {
                             <p>Loading....</p>
                         </div>
                     ) : (
-                        <div className="w-full gap-3  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 ">
+                        <div className="w-full gap-3  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
                             {user.status_id == 2
                                 ? datakelasGuru.map((k) => {
                                       return (
-                                          <div className="w-full rounded-md shadow-md bg-white p-3">
+                                          <div key={k.id} className="w-full rounded-md shadow-md bg-white p-3">
                                               <div className="flex flex-col gap-y-1">
                                                   <Link
                                                       to={`${k.no_induk_guru}/${k.id}`}

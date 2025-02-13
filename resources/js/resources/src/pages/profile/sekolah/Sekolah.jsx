@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Main from "../../../components/Main/Main";
 import repositori from "../../../utils/repositories";
+import repoimages from "../../../utils/repoimages";
 
 export default function Sekolah() {
     const [sekolah, setSekolah] = useState([]);
@@ -16,10 +17,10 @@ export default function Sekolah() {
                 },
                 method: "GET",
             }).then((res) => res.json());
-            console.log(response.data);
+
             return setSekolah(response.data);
         } catch (error) {
-            console.log(error.message);
+            error.message;
         }
     };
     useEffect(() => {
@@ -95,6 +96,12 @@ export default function Sekolah() {
                     <div className="w-full rounded-md shadow-md bg-white p-5">
                         <div className="flex flex-col md:flex-row gap-y-5 md:gap-y-0 w-full">
                             <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
+                                <div className="w-36 h-36 rounded-full shadow-md">
+                                    <img
+                                        src={repoimages + sekolah.image}
+                                        alt="profile"
+                                    />
+                                </div>
                                 <h1>{sekolah.nama_sekolah}</h1>
 
                                 <h1 className="font-bold text-slate-500 text-base">
