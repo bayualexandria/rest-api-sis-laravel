@@ -1,4 +1,4 @@
-## Instalation Project Web Sistem Informasi Siswa (Laravel 11)
+## Instalation Project Web Sistem Informasi Siswa (Laravel 12)
 
 ## Instalation Package to composer
 
