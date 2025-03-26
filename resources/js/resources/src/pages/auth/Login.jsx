@@ -88,12 +88,12 @@ function Login() {
         } catch (e) {
             setLoading(false);
             if (e.message === "Failed to fetch") {
-                setError(
-                    "Koneksi ke server terputus! Mohon hubungi pihak administrator server."
-                );
-                setTimeout(() => {
-                    return setError("");
-                }, 8000);
+                return templateModal.fire({
+                    icon: "error",
+                    title: "Koneksi ke server terputus! Mohon hubungi pihak administrator server.",
+                });
+                    
+                
             }
         }
     };
